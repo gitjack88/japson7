@@ -1,0 +1,175 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>淘梦写文助手</title>  
+    <link rel="stylesheet" href="./js/layui/css/layui.css">
+
+    <style>
+    html{   
+    width: 100%;   
+    height: 100%;   
+    overflow: hidden;   
+    font-style: sans-serif;   
+	}   
+	body{   
+	    width: 100%;   
+	    height: 100%;   
+	    
+	}   
+	#login{   
+	    position: absolute;   
+	    top: 0%;   
+	    left:0%;   
+	    margin: -150px 0 0 -150px;   
+	    width: 600px;   
+	    height: 400px;
+		font-family: 'Open Sans',sans-serif;   
+	    margin: 0;   
+	    background-size: 100%;
+        background-repeat: no-repeat;
+        background-image: -moz-linear-gradient( 45deg, rgb(71,198,140) 0%, rgb(148,211,118) 100%);
+        background-image: -webkit-linear-gradient( 45deg, rgb(71,198,140) 0%, rgb(148,211,118) 100%);
+        background-image: -ms-linear-gradient( 45deg, rgb(71,198,140) 0%, rgb(148,211,118) 100%);
+	}   
+    
+	.logo{
+        width: 50px;height: 50px;
+        margin:0 auto;
+        margin-top: 100px;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 10px;
+        background:rgba(255,255,255,0.5)
+    }
+    .logo img{
+        width: 100%;
+        
+    }
+    .sp{
+        color: #fff;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    .company{
+        background:#F9F9F9;
+        height: 40px;
+        line-height: 40px;
+        font-size: 0.75rem;
+        overflow: hidden;
+        white-space:nowrap;
+        border-radius: 3px;
+        text-indent: 3px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    footer{
+        width: 100%;
+        height: 70px;
+        line-height: 70px;
+        background:#F9F9F9;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        position: relative;
+        bottom: -85px;
+    }
+    .progress{
+        width: 100%;
+        
+        position: absolute;
+        top: 0px;
+    }
+    .message{
+        margin: 5px 0 5px 5px;
+        padding:5px;
+    }
+   
+    </style>
+</head>  
+<body>  
+    <div id="login">
+ 
+            <div class="logo">
+                <img src="./images/ico.ico" alt="">
+            </div>
+            <div class="sp">
+                TM写文助手
+            </div>
+            <!-- <div class="company">
+                世界上一成不变的东西，只有“任何事物都是在不断变化的”这条真理
+            </div> -->
+            
+            <footer>
+                <div class="progress">
+                    <div class="layui-progress">
+                        <div class="layui-progress-bar layui-bg-red"></div>
+                    </div>
+                </div>
+                <div class="message">
+                        发现新版本,开始检测更新...
+                </div>
+            </footer>
+    </div>
+    <script type="text/javascript" src="./js/layui/layui.js"></script>
+    <script>
+        
+        layui.use('element',function(){
+            var element = layui.element;
+        });
+        const {ipcRenderer} = require('electron');
+        var inspect = document.querySelector('.message')
+        var progress= document.querySelector('.layui-bg-red');
+        ipcRenderer.send('Updates');
+        ipcRenderer.on("updatestatus", function (message, data) {
+                console.log("message:"+message)
+                console.log('data:'+data.msg);
+                if(data.quit == '200'){
+                    ipcRenderer.send('exit-update','ok');
+                    inspect.innerHTML = data.msg;
+                }
+                // console.log(message+":"+data);
+                inspect.innerHTML = data.msg;
+                progress.style.width = data.percent+'%';
+                
+        })
+
+        //获取更新
+        //ipcRenderer.send('update');
+        
+            // ipcRenderer.on('message',(event,{message,data}) => {
+            // console.log("message:"+message);
+            // console.log('data:'+data);
+            // let update = document.getElementsByClassName("update")[0];
+            // update.innerHTML = message + " data:" + JSON.stringify(data);
+            //     switch(message){
+            //         case "download-progress":
+            //         console.log('downloadProgress:'+data);
+            //             var progress = document.getElementsByClassName('layui-progress-bar')[0];
+            //             progress.setAttribute('lay-percent',data.percent);
+            //             break;
+            //         case "isUpdateNow":
+            //             if (confirm('是否现在更新？')) {
+            //                 ipcRenderer.send('updateNow');
+            //             }else{
+            //                 // ipcRenderer.send('exit-update','ok');
+            //             }
+            //             break;
+            //             // console.log('downloadProgress'+data.percent);
+            //         case "error":
+            //             console.log('error:'+data)
+            //             // ipcRenderer.send('exit-update', 'ok');
+            //             break;
+            //         case "checking-for-update":
+                        
+            //             break;
+            //         case "update-available":
+
+            //             break;
+            //         case "update-not-available":
+                        
+            //             break;
+            //     }
+            // });
+    </script>
+</body>  
+</html>  

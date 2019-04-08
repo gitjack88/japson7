@@ -1,0 +1,119 @@
+		body{
+			background: #F2F2F2;
+		}
+		.header{
+			width:100%;
+			position:fixed;
+			top: 0px; 
+			z-index: 5;
+			background:#393D49/* url('images/header.png') */;
+			background-size: 100% 100%;
+			border-bottom: #D8D8D8 solid 1px;
+			overflow: hidden;
+
+		}
+		.logo{
+			width: 40px;
+			height: 80px;
+			margin-left:340px;
+			float: left;
+		}
+		.logo img{
+			margin-top: 20px;
+			width:30px;
+			float: left;
+		}
+		.header-logo-ch{
+			float: left;
+			height: 20px;
+			margin-top: 30px;
+			text-align: 80px;
+			font-size: 24px;
+			font-family: "Times New Roman",Georgia,Serif;
+		}
+		.header-login{
+			width: 100px;
+			height: 80px;
+			line-height: 80px;
+			color: white;
+			float: right;
+			margin-right: 340px;
+			font-size: 14px;
+			font-family: "Times New Roman",Georgia,Serif;
+		}
+		.header-login{}
+		.a{
+			color: white;
+		}
+		.contanier{
+
+		}
+		#box{
+			width: 1400px;
+			margin: 0 auto;
+			margin-top: 90px;
+		}
+		nav{
+			width:200px;
+			height: 600px;
+			/* position: fixed;
+			left: 150px; */
+			float: left;
+			border-radius: 2px;
+			margin-left:80px;
+			background:#393D49;
+			border: #E9E9E9 solid 1px;
+		}
+		.alist{
+			display: inline-block;
+			width:80%;
+			padding: 10px 20px;
+			text-decoration: none;
+			
+			color:#C4C5C9;
+		}
+		.icon{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			margin-right: 5px;
+			float: left;
+			margin-top: 1px;
+		}
+		.home{
+			background: url('images/home.png') no-repeat;
+			background-size: 100%;
+		}
+		.ess{
+			
+			background: url('images/ess.png') no-repeat;
+			background-size: 100%;
+		
+		}
+		.iss{
+			background: url('images/iss.png') no-repeat;
+			background-size: 100%;
+		}
+		.alist:nth-child(1){
+			margin-top: 10px;
+		}
+		.alist:hover{
+			text-decoration: none;  
+		}
+		.color{ 
+			color:white;
+			background: #009688;
+		}
+		
+		.content{
+			width: 1000px;
+			height: 600px;
+			float: left;
+			margin-left: 10px;
+			padding-top:0px;
+			border: solid 1px #eee;
+			border-top: none;
+			border-bottom: none;
+			overflow: hidden;
+			background: white;
+		}
